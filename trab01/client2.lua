@@ -1,9 +1,12 @@
 local socket = require("socket")
 
-local client = socket.connect("localhost","44525")
-
-local limit = 10 
+local limit = 1000
 local i = 0
+
+local t = socket.gettime()
+
+local client = socket.connect("localhost",44525)
+
 while i < limit do
 
     client:send("r\n")
@@ -19,4 +22,6 @@ while i < limit do
     i = i + 1
 end
 
-client.close()
+client:close()
+
+print(socket.gettime() - t .. " seconds elapsed")
