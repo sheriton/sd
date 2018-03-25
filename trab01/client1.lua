@@ -1,25 +1,27 @@
-local socket = require("socket")
+function client1(limit)
+    local socket = require("socket")
 
-local limit = 1000 
-local i = 0
+    -- local limit = 50000 
+    local i = 0
 
-local t = socket.gettime()
+    local t = socket.gettime()
 
-while i < limit do
+    while i < limit do
 
-    local client = socket.connect("localhost",44525)
+        local client = socket.connect("localhost",44525)
 
-    client:send("r\n")
+        client:send("r\n")
 
-    local ans, err = client:receive()
+        local ans, err = client:receive()
 
-    if not err then
-        -- print("Answer: "..ans)
-    else
-        print("Error: "..err)
+        if not err then
+            -- print("Answer: "..ans)
+        else
+            print("Error: "..err)
+        end
+
+        i = i + 1
     end
 
-    i = i + 1
+    print(socket.gettime() - t .. " seconds elapsed")
 end
-
-print(socket.gettime() - t .. " seconds elapsed")
