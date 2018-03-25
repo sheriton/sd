@@ -1,4 +1,4 @@
-function client1(limit)
+function client(limit)
     local socket = require("socket")
 
     -- local limit = 50000 
@@ -14,14 +14,14 @@ function client1(limit)
 
         local ans, err = client:receive()
 
-        if not err then
-            -- print("Answer: "..ans)
-        else
-            print("Error: "..err)
-        end
+        -- if not err then
+        --     -- print("Answer: "..ans)
+        -- else
+        --     print("Error: "..err)
+        -- end
 
         i = i + 1
     end
 
-    print(socket.gettime() - t .. " seconds elapsed")
+    return socket.gettime() - t
 end
