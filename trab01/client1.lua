@@ -16,4 +16,6 @@ while i < limit do
     else
         print("Error: "..err)
     end
+
+    i = i + 1
 end
